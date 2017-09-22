@@ -131,13 +131,14 @@ function createElement(node, isSVG) {
       })
     }
 
+    for (var i = 0; i < node.children.length; ) {
+      element.appendChild(createElement(node.children[i++], isSVG))
+    }
+
     for (var i in node.data) {
       setData(element, i, node.data[i])
     }
 
-    for (var i = 0; i < node.children.length; ) {
-      element.appendChild(createElement(node.children[i++], isSVG))
-    }
   }
 
   return element
